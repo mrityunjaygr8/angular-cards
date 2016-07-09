@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Masonry</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+
+    <script type="text/javascript" src="/javascripts/angular.min.js"></script>
+    <script type="text/javascript" src="/javascripts/masonry.js"></script>
+    <script type="text/javascript" src="/javascripts/angularGrid.js"></script>
+    <script type="text/javascript" src="/javascripts/angularApp.js"></script>
+</head>
+<body ng-app="app">
+<div class="wrapper" ng-controller="MainCtrl">
+    <p> {{start}}  {{end}} </p>
+    <div angular-grid="items" ag-grid-width="300" ag-gutter-size="10" ag-angular-grid-id="gallery" ag-refresh-on-img-load="true">
+        <div class="grid-item" ng-repeat="item in items">
+            <p> {{ item.title }}</p>
+            <p> {{ item.id }} </p>
+            <img src="{{ item.link }}">
+        </div>
+    </div>
+    <button ng-click="getMore(start, end)">Click</button>
+</div>
+</body>
+</html>
