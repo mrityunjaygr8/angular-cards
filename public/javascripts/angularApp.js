@@ -18,7 +18,9 @@ app.factory('items', ['$http', function ($http) {
     o.getMore = function(start, end){
         for(var i = start; i<end; i++){
             o.items.push({
-                id: i+1, title: $http.get('http://quotesondesign.com/wp-json/posts?filter[orderby]=rand'), link: 'https://unsplash.it/300/' +(i%3+3)*100 + '/?random'
+                id: i+1, title: $http.get('https://quotesondesign.com/wp-json/posts?filter[orderby]=rand').success(function(data){
+                    return data.content;
+                }), link: 'https://unsplash.it/300/' +(i%3+3)*100 + '/?random'
             });
         }
         console.log(start, end, o.getCount());
